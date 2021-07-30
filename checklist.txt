@@ -1,0 +1,24 @@
+[X] initial file/server setup
+[ ] CLIENT SIDE
+    [X] 2 numerical values input
+    [X] mathematical operation buttons
+    [ ] submit (equals) button
+        [X] create button
+        [ ] POST input data to server
+        [ ] GET return data from server
+    [ ] 'C' button that clears input fields
+        [ ] create button
+        [ ] append empty string to input
+    [ ] append record of math operations
+        [ ] GET request
+        [ ] history should exist even after refreshing page
+
+[ ] SERVER SIDE
+    [ ] receive POST of input data and store data
+    [ ] logic to compute the input data
+        [ ] Addition
+        [ ] Subtraction
+        [ ] Multiplication
+        [ ] Division
+    [ ] GET request to send computed data back
+    [ ] GET request to send history back
