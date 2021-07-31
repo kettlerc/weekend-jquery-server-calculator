@@ -4,8 +4,13 @@ $(document).ready(onReady);
 function onReady() {
     console.log('JQ');
     $('#equalsButton').on('click', computeMath);
-    // $('#clearButton').on('click', clearCalc);
+    $('#clearButton').on('click', clearNums);
     // getHistory();
+};
+
+function clearNums(){
+    $('#firstNum').val(''),
+    $('#secondNum').val('')
 };
 
 function computeMath(event){
@@ -20,12 +25,10 @@ function computeMath(event){
         url: '/equations',
         data: objectToSend
     }).then(function (response){
-        $('#firstNum').val(''),
-        $('#secondNum').val('')
         // getHistory();
     }).catch(function (err){
         alert('Something went wrong, please try again later.')
         console.log(err);  
-    });
-    
-}
+    });  
+};
+
