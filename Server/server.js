@@ -7,6 +7,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
 const equations = [];
+const answer = [];
 
 app.post('/equations', (req, res) => {
     console.log('in /equations post:', req.body);
@@ -14,12 +15,26 @@ app.post('/equations', (req, res) => {
     res.sendStatus(201);
 });
 
-app.get('/equations', (req, res) => {
-    console.log('in /equations get');
+app.get('/equationHistory', (req, res) => {
+    console.log('in /equationHistory get', equations);
     res.send(equations);
-    
-})
+});
+
+app.get('/equations', (req, res) => {
+    console.log('in equations get', equations);
+    doTheMath();
+    console.log('answer is', answer);
+    res.send(answer);
+});
 
 app.listen(port, function(){
     console.log('listening on port:', port);
 });
+
+function doTheMath(){
+    if (equations[equations.length-1].operator === '+'){
+        let total = equations[equations.length-1].numOne + equations[equations.length-1].numTwo;
+        answer.push(total);
+    }
+    return answer;
+};

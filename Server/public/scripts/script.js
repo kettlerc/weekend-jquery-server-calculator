@@ -24,6 +24,7 @@ function computeMath(event){
     event.preventDefault();
     objectToSend['numOne'] = $('#firstNum').val();
     objectToSend['numTwo'] = $('#secondNum').val();
+    //AJAX to GET the equation history
     $.ajax({
         type: 'POST',
         url: '/equations',
@@ -34,12 +35,22 @@ function computeMath(event){
         alert('Something went wrong, please try again later.')
         console.log(err);  
     });
+    //AJAX to GET result of equation
+    $.ajax({
+        type: 'GET',
+        url: '/equations'
+    }).then(function (response){
+        let result = $('#result');
+        result.empty();
+        console.log('answer is', response);
+        result.html(response);
+    });
 };
 
 function getHistory(){
     $.ajax({
         type: 'GET',
-        url: '/equations'
+        url: '/equationHistory'
     }).then(function (response){
         let eH = $('#equationHistory');
         eH.empty();
@@ -55,6 +66,7 @@ function getHistory(){
         }
     })
 };
+
 
 //functions for catching operator data with buttons
 function addNums() {
