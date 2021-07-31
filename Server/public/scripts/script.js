@@ -24,7 +24,6 @@ function computeMath(event){
     event.preventDefault();
     objectToSend['numOne'] = $('#firstNum').val();
     objectToSend['numTwo'] = $('#secondNum').val();
-    //AJAX to GET the equation history
     $.ajax({
         type: 'POST',
         url: '/equations',
@@ -35,7 +34,6 @@ function computeMath(event){
         alert('Something went wrong, please try again later.')
         console.log(err);  
     });
-    //AJAX to GET result of equation
     $.ajax({
         type: 'GET',
         url: '/equations'

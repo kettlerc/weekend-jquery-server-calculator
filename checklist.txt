@@ -2,25 +2,23 @@
 [ ] CLIENT SIDE
     [X] 2 numerical values input
     [X] mathematical operation buttons
-    [ ] submit (equals) button
+    [X] submit (equals) button
         [X] on click function
         [X] create button
         [X] POST input data to server
-            [ ] data includes both numbers and operator
-        [ ] GET return data from server
+            [X] data includes both numbers and operator
+        [X] GET return data from server
     [X] 'C' button that clears input fields
         [X] create button
         [X] append empty string to input
-    [ ] append record of math operations
-        [ ] GET request
-        [ ] history should exist even after refreshing page
+    [X] append record of math operations
+        [X] GET request
+        [X] history should exist even after refreshing page
+        [ ] history should include answer
+    [ ] append answer of equation
 
-[ ] SERVER SIDE
+[X] SERVER SIDE
     [X] receive POST of input data and store data
-    [ ] logic to compute the input data
-        [ ] Addition
-        [ ] Subtraction
-        [ ] Multiplication
-        [ ] Division
-    [ ] GET request to send computed data back
-    [ ] GET request to send history back
+    [X] logic to compute the input data
+    [X] GET request to send computed data back
+    [X] GET request to send history back
