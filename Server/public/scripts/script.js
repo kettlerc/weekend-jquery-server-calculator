@@ -56,19 +56,16 @@ function getHistory(){
     })
 };
 
-//functions for catching operator data
+//functions for catching operator data with buttons
 function addNums() {
     objectToSend['operator'] = '+';
 };
-
 function subtractNums() {
     objectToSend['operator'] = '-';
 };
-
 function multiplyNums() {
     objectToSend['operator'] = '*';
 };
-
 function divideNums() {
     objectToSend['operator'] = '/';
 };
