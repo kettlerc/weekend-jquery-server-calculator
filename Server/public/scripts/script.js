@@ -4,8 +4,8 @@ $(document).ready(onReady);
 function onReady() {
     console.log('JQ');
     $('#equalsButton').on('click', computeMath);
-    $('#clearButton').on('click', clearCalc);
-    getHistory();
+    // $('#clearButton').on('click', clearCalc);
+    // getHistory();
 };
 
 function computeMath(event){
@@ -22,7 +22,7 @@ function computeMath(event){
     }).then(function (response){
         $('#firstNum').val(''),
         $('#secondNum').val('')
-        getHistory();
+        // getHistory();
     }).catch(function (err){
         alert('Something went wrong, please try again later.')
         console.log(err);  
