@@ -5,8 +5,12 @@ function onReady() {
     console.log('JQ');
     $('#equalsButton').on('click', computeMath);
     $('#clearButton').on('click', clearNums);
+    $('#addButton').on('click', addNums);
+
     // getHistory();
 };
+
+let objectToSend = {};
 
 function clearNums(){
     $('#firstNum').val(''),
@@ -16,10 +20,8 @@ function clearNums(){
 function computeMath(event){
     console.log('in computeMath');
     event.preventDefault();
-    let objectToSend = {
-        numOne: $('#firstNum').val(),
-        numTwo: $('#secondNum').val()
-    }
+    objectToSend['numOne'] = $('#firstNum').val();
+    objectToSend['numTwo'] = $('#secondNum').val();
     $.ajax({
         type: 'POST',
         url: '/equations',
@@ -29,6 +31,9 @@ function computeMath(event){
     }).catch(function (err){
         alert('Something went wrong, please try again later.')
         console.log(err);  
-    });  
+    });
 };
 
+function addNums() {
+    objectToSend['operator'] = '+';
+}

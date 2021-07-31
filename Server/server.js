@@ -18,8 +18,6 @@ app.post('/equations', (req, res) => {
     res.sendStatus(201);
 });
 
-
-
 app.listen(port, function(){
     console.log('listening on port:', port);
 });

@@ -8,9 +8,9 @@
         [X] POST input data to server
             [ ] data includes both numbers and operator
         [ ] GET return data from server
-    [ ] 'C' button that clears input fields
-        [ ] create button
-        [ ] append empty string to input
+    [X] 'C' button that clears input fields
+        [X] create button
+        [X] append empty string to input
     [ ] append record of math operations
         [ ] GET request
         [ ] history should exist even after refreshing page
