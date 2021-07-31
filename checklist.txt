@@ -3,8 +3,10 @@
     [X] 2 numerical values input
     [X] mathematical operation buttons
     [ ] submit (equals) button
+        [ ] on click functions
         [X] create button
         [ ] POST input data to server
+            [ ] data includes both numbers and operator
         [ ] GET return data from server
     [ ] 'C' button that clears input fields
         [ ] create button
