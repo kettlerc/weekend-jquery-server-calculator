@@ -33,8 +33,23 @@ app.listen(port, function(){
 
 function doTheMath(){
     if (equations[equations.length-1].operator === '+'){
-        let total = equations[equations.length-1].numOne + equations[equations.length-1].numTwo;
+        let total = Number(equations[equations.length-1].numOne) 
+        + Number(equations[equations.length-1].numTwo);
         answer.push(total);
+    } else if (equations[equations.length-1].operator === '-'){
+        let total = Number(equations[equations.length-1].numOne) 
+        - Number(equations[equations.length-1].numTwo);
+        answer.push(total);
+    } else if (equations[equations.length-1].operator === '*'){
+        let total = Number(equations[equations.length-1].numOne) 
+        * Number(equations[equations.length-1].numTwo);
+        answer.push(total);
+    } else if (equations[equations.length-1].operator === '/'){
+        let total = Number(equations[equations.length-1].numOne) 
+        / Number(equations[equations.length-1].numTwo);
+        answer.push(total);
+    } else {
+        answer.push('Please choose an operator!')
     }
     return answer;
 };
