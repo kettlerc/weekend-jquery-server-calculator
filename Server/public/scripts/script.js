@@ -6,8 +6,10 @@ function onReady() {
     $('#equalsButton').on('click', computeMath);
     $('#clearButton').on('click', clearNums);
     $('#addButton').on('click', addNums);
-
-    // getHistory();
+    $('#subtractButton').on('click', subtractNums);
+    $('#multiplyButton').on('click', multiplyNums);
+    $('#divideButton').on('click', divideNums);
+    getHistory();
 };
 
 let objectToSend = {};
@@ -27,13 +29,46 @@ function computeMath(event){
         url: '/equations',
         data: objectToSend
     }).then(function (response){
-        // getHistory();
+        getHistory();
     }).catch(function (err){
         alert('Something went wrong, please try again later.')
         console.log(err);  
     });
 };
 
+function getHistory(){
+    $.ajax({
+        type: 'GET',
+        url: '/equations'
+    }).then(function (response){
+        let eH = $('#equationHistory');
+        eH.empty();
+        console.log(response);
+        for (let history of response){
+            eH.append(`
+            <li>
+            ${history.numOne}
+            ${history.operator}
+            ${history.numTwo}
+            =
+            </li>`);
+        }
+    })
+};
+
+//functions for catching operator data
 function addNums() {
     objectToSend['operator'] = '+';
-}
+};
+
+function subtractNums() {
+    objectToSend['operator'] = '-';
+};
+
+function multiplyNums() {
+    objectToSend['operator'] = '*';
+};
+
+function divideNums() {
+    objectToSend['operator'] = '/';
+};

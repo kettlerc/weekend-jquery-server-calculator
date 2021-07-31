@@ -6,17 +6,19 @@ app.use(express.static('./server/public'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
-const equations = [ ];
-
-
-
-
+const equations = [];
 
 app.post('/equations', (req, res) => {
     console.log('in /equations post:', req.body);
     equations.push(req.body);
     res.sendStatus(201);
 });
+
+app.get('/equations', (req, res) => {
+    console.log('in /equations get');
+    res.send(equations);
+    
+})
 
 app.listen(port, function(){
     console.log('listening on port:', port);
