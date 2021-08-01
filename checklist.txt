@@ -1,5 +1,5 @@
 [X] initial file/server setup
-[ ] CLIENT SIDE
+[X] CLIENT SIDE
     [X] 2 numerical values input
     [X] mathematical operation buttons
     [X] submit (equals) button
@@ -13,12 +13,19 @@
         [X] append empty string to input
     [X] append record of math operations
         [X] GET request
-        [X] history should exist even after refreshing page
-        [ ] history should include answer
-    [ ] append answer of equation
+        [ ] history should exist even after refreshing page
+        [X] history should include answer
+    [X] append answer of equation
 
 [X] SERVER SIDE
     [X] receive POST of input data and store data
     [X] logic to compute the input data
     [X] GET request to send computed data back
     [X] GET request to send history back
+
+STRETCH GOALS
+[ ] interface looks like real calculator
+[ ] only allow POST if necessary input is ready
+[ ] allow use to DELETE history with button
+[ ] click on entry in history to run equation again
+[ ] deploy to heroku
