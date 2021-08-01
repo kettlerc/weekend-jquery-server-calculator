@@ -9,6 +9,7 @@ function onReady() {
     $('#subtractButton').on('click', subtractNums);
     $('#multiplyButton').on('click', multiplyNums);
     $('#divideButton').on('click', divideNums);
+    keepHistory();
 };
 
 let objectToSend = {};
@@ -28,22 +29,30 @@ function computeMath(event){
         url: '/equations',
         data: objectToSend
     }).then(function (response){
-    }).catch(function (err){
-        alert('Something went wrong, please try again later.')
-        console.log(err);  
+        keepHistory();
     });
     $.ajax({
         type: 'GET',
         url: '/equations'
     }).then(function (response){
-        let history = $('#equationHistory');
-        console.log(response);
-        history.append(`<li>${response[response.length-2]}</li>`);
-
         let result = $('#result');
         result.empty();
         result.append(`${response[response.length-1]}`);
     });
+};
+
+function keepHistory(){
+    $.ajax({
+        type: 'GET',
+        url: '/history'
+    }).then(function (response){
+        console.log(response);
+        let history = $('#equationHistory');
+        history.empty();
+        for (let i=0; i<response.length; i++){
+            history.append(`<li>${response[response.length-2]}</li>`);
+        }
+    })
 };
 
 //functions for catching operator data with buttons
