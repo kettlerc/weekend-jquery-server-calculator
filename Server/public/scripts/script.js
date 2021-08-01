@@ -49,10 +49,11 @@ function keepHistory(){
         console.log(response);
         let history = $('#equationHistory');
         history.empty();
-        for (let i=0; i<response.length; i++){
-            history.append(`<li>${response[response.length-2]}</li>`);
+        for (let i=0; i<response.length; i+=2){
+            let thing = response[i];
+            history.append(`<li>${thing}</li>`);
         }
-    })
+    });
 };
 
 //functions for catching operator data with buttons

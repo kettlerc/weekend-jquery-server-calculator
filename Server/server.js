@@ -10,7 +10,7 @@ const equations = [];
 const answer = [];
 
 app.post('/equations', (req, res) => {
-    // console.log('in /equations post:', req.body);
+    console.log('in /equations post:', req.body);
     equations.push(req.body);
     res.sendStatus(201);
 });
