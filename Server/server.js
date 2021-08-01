@@ -15,11 +15,6 @@ app.post('/equations', (req, res) => {
     res.sendStatus(201);
 });
 
-app.get('/equationHistory', (req, res) => {
-    console.log('in /equationHistory get', equations);
-    res.send(equations);
-});
-
 app.get('/equations', (req, res) => {
     console.log('in equations get', equations);
     doTheMath();
@@ -39,15 +34,19 @@ function doTheMath(){
     if (equations[equations.length-1].operator === '+'){
         let total = numOne + numTwo;
         answer.push(`${numOne} ${operator} ${numTwo} = ${total}`);
+        answer.push(`${total}`);
     } else if (equations[equations.length-1].operator === '-'){
         let total = numOne - numTwo;
         answer.push(`${numOne} - ${numTwo} = ${total}`);
+        answer.push(`${total}`);
     } else if (equations[equations.length-1].operator === '*'){
         let total = numOne * numTwo;
         answer.push(`${numOne} * ${numTwo} = ${total}`);
+        answer.push(`${total}`);
     } else if (equations[equations.length-1].operator === '/'){
         let total = numOne / numTwo;
         answer.push(`${numOne} / ${numTwo} = ${total}`);
+        answer.push(`${total}`);
     } else {
         alert('Please choose an operator!');
     }
