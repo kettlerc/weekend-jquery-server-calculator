@@ -32,24 +32,24 @@ app.listen(port, function(){
 });
 
 function doTheMath(){
+    let numOne = Number(equations[equations.length-1].numOne);
+    let numTwo = Number(equations[equations.length-1].numTwo);
+    let operator = equations[equations.length-1].operator;
+
     if (equations[equations.length-1].operator === '+'){
-        let total = Number(equations[equations.length-1].numOne) 
-        + Number(equations[equations.length-1].numTwo);
-        answer.push(total);
+        let total = numOne + numTwo;
+        answer.push(`${numOne} ${operator} ${numTwo} = ${total}`);
     } else if (equations[equations.length-1].operator === '-'){
-        let total = Number(equations[equations.length-1].numOne) 
-        - Number(equations[equations.length-1].numTwo);
-        answer.push(total);
+        let total = numOne - numTwo;
+        answer.push(`${numOne} - ${numTwo} = ${total}`);
     } else if (equations[equations.length-1].operator === '*'){
-        let total = Number(equations[equations.length-1].numOne) 
-        * Number(equations[equations.length-1].numTwo);
-        answer.push(total);
+        let total = numOne * numTwo;
+        answer.push(`${numOne} * ${numTwo} = ${total}`);
     } else if (equations[equations.length-1].operator === '/'){
-        let total = Number(equations[equations.length-1].numOne) 
-        / Number(equations[equations.length-1].numTwo);
-        answer.push(total);
+        let total = numOne / numTwo;
+        answer.push(`${numOne} / ${numTwo} = ${total}`);
     } else {
-        answer.push('Please choose an operator!')
+        alert('Please choose an operator!');
     }
     return answer;
 };

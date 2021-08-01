@@ -29,7 +29,7 @@ function computeMath(event){
         url: '/equations',
         data: objectToSend
     }).then(function (response){
-        getHistory();
+        // getHistory();
     }).catch(function (err){
         alert('Something went wrong, please try again later.')
         console.log(err);  
@@ -38,10 +38,10 @@ function computeMath(event){
         type: 'GET',
         url: '/equations'
     }).then(function (response){
-        let result = $('#result');
+        let result = $('#equationHistory');
         result.empty();
-        console.log('answer is', response);
-        result.html(response);
+        console.log(response);
+        result.append(`<li>${response}</li>`)
     });
 };
 
