@@ -24,7 +24,7 @@ app.get('/equations', (req, res) => {
 app.get('/history', (req, res) => {
     console.log('answer is', answer);
     res.send(answer);
-})
+});
 
 app.listen(port, function(){
     console.log('listening on port:', port);
