@@ -2,7 +2,7 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
-const port = 8080;
+const PORT = 8080;
 app.use(express.static('./server/public'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
@@ -14,15 +14,17 @@ const answer = [];
 
 //POST receives initial data from client
 app.post('/equations', (req, res) => {
-    console.log('in /equations post:', req.body);
     equations.push(req.body);
+    console.log('in /equations post:', req.body);
+    doTheMath();
     res.sendStatus(201);
 });
 
 //runs doTheMath function on data and returns it to client
 app.get('/equations', (req, res) => {
-    // console.log('in equations get', equations);
-    doTheMath();
+    //NOTE FROM LIVE SOLVE: better to run this in POST so that it only
+    //runs once instead of every time you refresh
+    // doTheMath();
     res.send(answer);
 });
 
@@ -33,8 +35,8 @@ app.get('/history', (req, res) => {
 });
 
 //tells server to listen for requests
-app.listen(port, function(){
-    console.log('listening on port:', port);
+app.listen(PORT, () => {
+    console.log('listening on PORT:', PORT);
 });
 
 //function for computing math equations
@@ -43,19 +45,19 @@ function doTheMath(){
     let numTwo = Number(equations[equations.length-1].numTwo);
     let operator = equations[equations.length-1].operator;
 
-    if (equations[equations.length-1].operator === '+'){
+    if (operator === '+'){
         let total = numOne + numTwo;
         answer.push(`${numOne} ${operator} ${numTwo} = ${total}`);
         answer.push(`${total}`);
-    } else if (equations[equations.length-1].operator === '-'){
+    } else if (operator === '-'){
         let total = numOne - numTwo;
         answer.push(`${numOne} - ${numTwo} = ${total}`);
         answer.push(`${total}`);
-    } else if (equations[equations.length-1].operator === '*'){
+    } else if (operator === '*'){
         let total = numOne * numTwo;
         answer.push(`${numOne} * ${numTwo} = ${total}`);
         answer.push(`${total}`);
-    } else if (equations[equations.length-1].operator === '/'){
+    } else if (operator === '/'){
         let total = numOne / numTwo;
         answer.push(`${numOne} / ${numTwo} = ${total}`);
         answer.push(`${total}`);

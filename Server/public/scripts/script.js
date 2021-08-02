@@ -2,12 +2,13 @@ console.log('JS');
 //initializes JQuery
 $(document).ready(onReady);
 
-
+//function that runs immediately on page load
 function onReady() {
     console.log('JQ');
     //jquery to handle button clicks
     $('#equalsButton').on('click', computeMath);
     $('#clearButton').on('click', clearNums);
+    //NOTE FROM LIVE SOLVE: could have used 'this' to simplify
     $('#addButton').on('click', addNums);
     $('#subtractButton').on('click', subtractNums);
     $('#multiplyButton').on('click', multiplyNums);
@@ -17,6 +18,8 @@ function onReady() {
 };
 
 //empty object to hold data
+//NOTE FROM LIVE SOLVE: could have used an empty string and defined
+//variables instead of adding values directly to object
 let objectToSend = {};
 
 //function to clear input fields
@@ -28,7 +31,7 @@ function clearNums(){
 //function for posting data to server and getting result back
 function computeMath(event){
     console.log('in computeMath');
-    //prevents page from refreshing on for submit
+    //prevents page from refreshing on submit
     event.preventDefault();
     //pushes input field data to empty object
     objectToSend['numOne'] = $('#firstNum').val();
@@ -65,13 +68,14 @@ function keepHistory(){
         let history = $('#equationHistory');
         history.empty();
         for (let i=0; i<response.length; i+=2){
-            let thing = response[i];
-            history.append(`<li>${thing}</li>`);
+            let equation = response[i];
+            history.append(`<li>${equation}</li>`);
         }
     });
 }; //end keepHistory
 
 //functions for catching operator data with buttons
+//NOTE FROM LIVE SOLVE: could have use 'this' to simplify
 function addNums() {
     objectToSend['operator'] = '+';
 }; //end addNums
